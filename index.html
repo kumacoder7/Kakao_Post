@@ -11,46 +11,46 @@
   </div>
   <script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
   <script>
-    window.addEventListener("message", onReceivedPostMessage, false);
+//     window.addEventListener("message", onReceivedPostMessage, false);
 
-    function onReceivedPostMessage(event){
-      //..ex deconstruct event into action & params
-      var action = event.data.action;
-      var params = event.data.params;
-      console.log("onReceivedPostMessage "+event);
-    }
+//     function onReceivedPostMessage(event){
+//       //..ex deconstruct event into action & params
+//       var action = event.data.action;
+//       var params = event.data.params;
+//       console.log("onReceivedPostMessage "+event);
+//     }
 
-    function onReceivedActivityMessageViaJavascriptInterface(json){
-      //..ex deconstruct data into action & params
-      var data = JSON.parse(json);
-      var action = data.action;
-      var params = data.params;
-      console.log("onReceivedActivityMessageViaJavascriptInterface "+event);
-    }
+//     function onReceivedActivityMessageViaJavascriptInterface(json){
+//       //..ex deconstruct data into action & params
+//       var data = JSON.parse(json);
+//       var action = data.action;
+//       var params = data.params;
+//       console.log("onReceivedActivityMessageViaJavascriptInterface "+event);
+//     }
 
-    function postMessageToiOS(postData) {
-        window.webkit.messageHandlers.callBackHandler.postMessage(postData);
-    }
+//     function postMessageToiOS(postData) {
+//         window.webkit.messageHandlers.callBackHandler.postMessage(postData);
+//     }
 
     var element_layer = document.getElementById('layer');
     function execDaumPostcode() {
       new daum.Postcode({
         oncomplete: function(data) {
           messageHandler.postMessage(JSON.stringify(data));
-          var jibunAddress = ""
+//           var jibunAddress = ""
 
-          if (data.jibunAddress == "") {
-            jibunAddress = data.autoJibunAddress
-          } else if (data.autoJibunAddress == "") {
-            jibunAddress = data.jibunAddress
-          }
+//           if (data.jibunAddress == "") {
+//             jibunAddress = data.autoJibunAddress
+//           } else if (data.autoJibunAddress == "") {
+//             jibunAddress = data.jibunAddress
+//           }
 
-          var postData = {
-              roadAddress : data.roadAddress,
-              jibunAddress : jibunAddress,
-              zonecode : data.zonecode
-          };
-          window.postMessageToiOS(postData);
+//           var postData = {
+//               roadAddress : data.roadAddress,
+//               jibunAddress : jibunAddress,
+//               zonecode : data.zonecode
+//           };
+//           window.postMessageToiOS(postData);
         },
         width : '100%',
         height : '100%'
