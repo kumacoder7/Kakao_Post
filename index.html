@@ -36,6 +36,7 @@
     function execDaumPostcode() {
       new daum.Postcode({
         oncomplete: function(data) {
+          messageHandler.postMessage(JSON.stringify(data));
           var jibunAddress = ""
 
           if (data.jibunAddress == "") {
